@@ -5,7 +5,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-client = OpenAI(api_key=os.getenv("API_KEY"))
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv("API_KEY_OPENAI"))
 
 
 # Function to encode the image
@@ -43,4 +45,6 @@ print(response.choices[0])
 
 print(response.choices[0].message.content)
 
-open(Path("output/output_example.md"), "w").write(response.choices[0].message.content)
+open(Path("output/output_example_gpto.md"), "w").write(
+    response.choices[0].message.content
+)
